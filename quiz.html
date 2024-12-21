@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jo færre jo bedre!</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div id="start-screen" style="display: none;">
+    <h2>Setup Teams</h2>
+    <form id="setup-form">
+      <div id="team-inputs"></div>
+      <button type="submit">Start Game</button>
+    </form>
+  </div>
+
+  <div id="game" style="display: none;">
+    <h1>Jo færre jo bedre!</h1>
+
+    <!-- Question Text -->
+    <p id="question-text"></p>
+
+    <!-- Buttons -->
+
+    <!-- Meter Bar -->
+    <div id="countdown-number">100</div>
+    <div id="meter-container">
+      <div id="meter-bar"></div>
+    </div>
+    <!-- Playes Image and Answer -->
+    <div id="player" class="player-info">
+      <div id="player1">
+        <img class="player-img" src="holdbilleder/IMG_2914 copy.jpeg" alt="Player 1">
+      </div>
+      <div id="player2">
+        <img class="player-img" src="holdbilleder/IMG_2909 copy.jpeg" alt="Player 2">
+      </div>
+      <div id="player3">
+        <img class="player-img" src="holdbilleder/IMG_2914 copy.jpeg" alt="Player 3">
+      </div>
+      <div id="player4">
+        <img class="player-img" src="holdbilleder/IMG_0440 2.jpeg" alt="Player 4">
+      </div>
+      <h2 id="teamname">Player 2</h2>
+    </div>
+    <div>
+      <input type="text" id="answer" placeholder="svar" />
+      <button id="submit-answers" onclick="submitAnswer()">Test svar</button>
+      <button id="show-zero-scores" style="display: none;">Vis nulpointer</button>
+      <button id="next-question" onclick="nextQuestion()">Næste spørgsmål</button>
+    </div>
+    <!-- Player Scores -->
+    <p id="player-scores"></p>
+
+  </div>
+
+  <!-- Winner Container with text and winnerphoto-->
+  <div id="winner-container">
+    <h2 id="winner-text"></h2>
+    <div id="winner-photos">
+      <img id="winner-photo1" style="display: none;" src="holdbilleder/IMG_2914 copy.jpeg" alt="Winner">
+      <img id="winner-photo2" style="display: none;" src="holdbilleder/IMG_2909 copy.jpeg" alt="Winner">
+      <img id="winner-photo3" style="display: none;" src="holdbilleder/IMG_2914 copy.jpeg" alt="Winner">
+      <img id="winner-photo4" style="display: none;" src="holdbilleder/IMG_0440 2.jpeg" alt="Winner">
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
