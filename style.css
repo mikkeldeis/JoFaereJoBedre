@@ -59,6 +59,7 @@ body {
 h1 {
   background: linear-gradient(to right, #ff0000, #ff9900, #ffff00, #00ff00, #00ffff, #0000ff, #9900ff);
   -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
   font-weight: 500;
   font-size: 60px;
