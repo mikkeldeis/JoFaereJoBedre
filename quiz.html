@@ -13,13 +13,20 @@
     rel="stylesheet">
 </head>
 
-<body>
-  <div id="start-screen" style="display: none;">
-    <h2>Setup Teams</h2>
-    <form id="setup-form">
-      <div id="team-inputs"></div>
-      <button type="submit">Start Game</button>
-    </form>
+<body class="start-screen-active">
+  <div id="start-screen">
+    <h1>Jo færre jo bedre!</h1>
+    <label for="team-selector">Antal hold:</label>
+    <select id="team-selector" name="team-selector" onchange="generateForms()">d
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+    </select>
+    <div id="team-inputs">
+      <input type="text" id="team-name" placeholder="Holdnavn 1" />
+      <input type="text" id="team-name" placeholder="Holdnavn 2" />
+    </div>
+    <button type="button" id="start-game">Start spil</button>
   </div>
 
   <div id="game" style="display: none;">
@@ -28,34 +35,43 @@
     <!-- Question Text -->
     <p id="question-text"></p>
 
+
     <!-- Buttons -->
 
     <!-- Meter Bar -->
-    <div id="countdown-number">100</div>
-    <div id="meter-container">
-      <div id="meter-bar"></div>
+    <div id="meter">
+      <div id="countdown-number">100</div>
+      <div id="meter-container">
+        <div id="meter-bar"></div>
+      </div>
     </div>
     <!-- Playes Image and Answer -->
-    <div id="player" class="player-info">
+    <div id="player-container" class="player-info">
       <div id="player1">
-        <img class="player-img" src="holdbilleder/IMG_2914 copy.jpeg" alt="Player 1">
+        <img class="player-img" src="holdbilleder/theakat.png" alt="Player 1">
       </div>
       <div id="player2">
-        <img class="player-img" src="holdbilleder/IMG_2909 copy.jpeg" alt="Player 2">
+        <img class="player-img" src="holdbilleder/slememma.png" alt="Player 2">
       </div>
       <div id="player3">
-        <img class="player-img" src="holdbilleder/IMG_2914 copy.jpeg" alt="Player 3">
+        <img class="player-img" src="holdbilleder/albertdany.png" alt="Player 3">
       </div>
       <div id="player4">
         <img class="player-img" src="holdbilleder/IMG_0440 2.jpeg" alt="Player 4">
       </div>
       <h2 id="teamname">Player 2</h2>
     </div>
-    <div>
+    <div id="answer-container">
       <input type="text" id="answer" placeholder="svar" />
       <button id="submit-answers" onclick="submitAnswer()">Test svar</button>
-      <button id="show-zero-scores" style="display: none;">Vis nulpointer</button>
-      <button id="next-question" onclick="nextQuestion()">Næste spørgsmål</button>
+    </div>
+    <div>
+
+      <div>
+
+        <button id="show-zero-scores" style="display: none;">Vis nulpointer</button>
+        <button id="next-question" onclick="nextQuestion()">Næste spørgsmål</button>
+      </div>
     </div>
     <!-- Player Scores -->
     <p id="player-scores"></p>
@@ -66,15 +82,13 @@
   <div id="winner-container">
     <h2 id="winner-text"></h2>
     <div id="winner-photos">
-      <img id="winner-photo1" style="display: none;" src="holdbilleder/IMG_2914 copy.jpeg" alt="Winner">
-      <img id="winner-photo2" style="display: none;" src="holdbilleder/IMG_2909 copy.jpeg" alt="Winner">
-      <img id="winner-photo3" style="display: none;" src="holdbilleder/IMG_2914 copy.jpeg" alt="Winner">
+      <img id="winner-photo1" style="display: none;" src="holdbilleder/theakat.png" alt="Winner">
+      <img id="winner-photo2" style="display: none;" src="holdbilleder/slememma.png" alt="Winner">
+      <img id="winner-photo3" style="display: none;" src="holdbilleder/albertdany.png" alt="Winner">
       <img id="winner-photo4" style="display: none;" src="holdbilleder/IMG_0440 2.jpeg" alt="Winner">
     </div>
   </div>
-
   <script src="script.js"></script>
-
 </body>
 
 </html>

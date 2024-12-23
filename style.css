@@ -21,6 +21,16 @@ body {
   animation: sparkle 5s infinite;
 }
 
+.overskrift {
+  width: 200px;
+  height: 200px;
+}
+
+body.start-screen-active {
+  background: url('nytår.png') center/cover no-repeat, #000;
+  /* Replace 'your-image-path.jpg' with your image file */
+}
+
 #start-screen {
   display: flex;
   flex-direction: column;
@@ -31,11 +41,19 @@ body {
   border-radius: 10px;
   box-shadow: 0 0 10px #ff9900;
   color: #fff;
+  width: 35%;
+  height: 80%;
+}
+
+#start-screen form {
+  width: 100%;
+  max-width: 400px;
 }
 
 #game {
-  width: 50%;
+  width: 65%;
   background-color: #000;
+  opacity: 0.8;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px #ff9900;
@@ -62,11 +80,13 @@ h1 {
   background-clip: text;
   color: transparent;
   font-weight: 500;
-  font-size: 60px;
+  font-size: 50px;
   margin-bottom: 20px;
-  text-shadow: 0 0 12px #fff, 0 0 30px #ff9900;
-  animation: glow 3s infinite;
+  text-shadow: 0 0 12px #fff, 0 0 20px #ff9900;
+  animation: glow 2s infinite;
 }
+
+
 
 /* Glowing Text Animation */
 @keyframes glow {
@@ -91,10 +111,10 @@ h1 {
 
 /* Input Fields */
 input[type="text"] {
-  width: 80%;
-  padding: 15px;
-  margin: 10px 0;
-  border-radius: 10px;
+  width: 40%;
+  padding: 5px;
+  margin: 5px 0;
+  border-radius: 8px;
   border: 2px solid #ff9900;
   font-size: 1.2em;
   background-color: #222;
@@ -102,9 +122,11 @@ input[type="text"] {
   text-shadow: 0 0 5px #ff9900;
 }
 
+
+
 /* Buttons */
 button {
-  padding: 15px 30px;
+  padding: 10px 20px;
   background-color: #ff9900;
   color: white;
   border: none;
@@ -116,11 +138,14 @@ button {
   box-shadow: 0 0 10px #ff9900, 0 0 20px #ff9900;
 }
 
+
+
 button:hover {
   background-color: #ff5500;
   transform: scale(1.1);
   box-shadow: 0 0 15px #ff5500, 0 0 30px #ff5500;
 }
+
 
 /* Team Name */
 #teamname {
@@ -130,6 +155,7 @@ button:hover {
   text-shadow: 0 0 10px #ff9900;
   animation: flicker 2s infinite;
 }
+
 
 /* Flicker Effect */
 @keyframes flicker {
@@ -147,9 +173,8 @@ button:hover {
 /* Player Images */
 .player-img {
   width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  margin-right: 10px;
+  border-radius: 20%;
+  margin-right: 5px;
   border: 3px solid #ff9900;
   box-shadow: 0 0 10px #ff9900;
 }
@@ -159,7 +184,7 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   margin-top: 20px;
 }
 
@@ -236,3 +261,70 @@ body::after {
   margin-left: auto;
   margin-right: auto;
 }
+
+/* Style for the select dropdown */
+#team-selector {
+  background-color: #222;
+  /* Dark background to match the theme */
+  color: #fff;
+  /* White text for contrast */
+  font-family: "Shantell Sans", cursive;
+  /* Consistent font style */
+  font-size: 1.2em;
+  padding: 10px 15px;
+  border: 2px solid #ff9900;
+  /* Glowing border effect */
+  border-radius: 10px;
+  /* Rounded corners */
+  box-shadow: 0 0 10px #ff9900, 0 0 20px #ff5500;
+  /* Glow effect */
+  text-shadow: 0 0 5px #ff9900;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  appearance: none;
+  /* Custom styling for dropdown arrow */
+}
+
+/* Custom arrow styling */
+#team-selector::-ms-expand {
+  display: none;
+  /* Remove default dropdown arrow for IE */
+}
+
+#team-selector::after {
+  content: '▼';
+  /* Add a custom dropdown arrow */
+  color: #ff9900;
+  position: absolute;
+  right: 15px;
+  pointer-events: none;
+}
+
+/* Hover effect */
+#team-selector:hover {
+  background-color: #333;
+  /* Slightly lighter on hover */
+  border-color: #ff5500;
+  /* Brighten border on hover */
+  box-shadow: 0 0 15px #ff5500, 0 0 30px #ff9900;
+}
+
+/* Options dropdown */
+#team-selector option {
+  background-color: #000;
+  /* Match body background */
+  color: #fff;
+  /* White text */
+  font-size: 1em;
+  padding: 5px 10px;
+  text-shadow: 0 0 5px #ff9900;
+}
+
+/* Focus effect */
+#team-selector:focus {
+  outline: none;
+  border-color: #ffff00;
+  /* Bright gold focus */
+  box-shadow: 0 0 15px #ffff00, 0 0 25px #ff9900;
+}
+
