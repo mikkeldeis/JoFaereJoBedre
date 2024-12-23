@@ -2,6 +2,73 @@
 // Game data
 const questions = [
   {
+    text: "Pigenavne i 90'erne",
+    answers: {
+      "emma": 27,
+      "anna": 23,
+      "sofia": 23,
+      "camilla": 20,
+      "anne": 17,
+      "louise": 17,
+      "mette": 16,
+      "christina": 15,
+      "laura": 15,
+      "katrine": 13,
+      "cecilie": 11,
+      "josefine": 11,
+      "maria": 11,
+      "marie": 11,
+      "sarah": 11,
+      "ida": 9,
+      "amalie": 8,
+      "emilie": 8,
+      "nanna": 8,
+      "simone": 8,
+      "caroline": 7,
+      "christine": 7,
+      "julie": 7,
+      "mathilde": 7,
+      "mia": 7,
+      "clara": 6,
+      "line": 6,
+      "maja": 5,
+      "rikke": 5,
+      "signe": 5,
+      "carina": 4,
+      "charlotte": 4,
+      "malene": 4,
+      "mie": 4,
+      "amanda": 3,
+      "anja": 3,
+      "freja": 3,
+      "nicoline": 3,
+      "stine": 3,
+      "alberte": 2,
+      "frederikke": 2,
+      "lærke": 2,
+      "michelle": 2,
+      "astrid": 1,
+      "helena": 1,
+      "helene": 1,
+      "jasmin": 1,
+      "johanne": 1,
+      "nadia": 1,
+      "natascha": 1,
+      "nina": 1,
+      "pernille": 1,
+      "rebecca": 1,
+      "stephanie": 1,
+      "trine": 1,
+      "victoria": 1,
+      "ditte": 0,
+      "isabella": 0,
+      "katja": 0,
+      "sabrina": 0,
+      "sandra": 0,
+      "thea": 0
+    }
+  },
+  {
     text: "Lande med gul, orange eller gyldne farver i deres flag i Europa?", //medlem af FN
     answers: {
       "tyskland": 78,
@@ -156,41 +223,6 @@ const questions = [
     }
   },
   {
-    text: "Kageingredienser i gulerodskage, brunsviger eller drømmekage fra Brovst?", // ifølge 'Frøken Jensens kogebog' og 'God mad - let at lave'
-    answers: {
-      "hvedemel": 93,
-      "sukker": 79,
-      "brun farin": 75,
-      "gulerod": 71,
-      "smør": 63,
-      "æg": 63,
-      "kokosmel": 51,
-      "mælk": 38,
-      "bagepulver": 37,
-      "gær": 33,
-      "salt": 15,
-      "kanel": 13,
-      "vand": 10,
-      "flormelis": 9,
-      "flødeost": 7,
-      "natron": 7,
-      "vaniljesukker": 7,
-      "vanilje": 6,
-      "rosiner": 5,
-      "hakkede nødder": 4,
-      "kardemomme": 4,
-      "havregryn": 2,
-      "vindruekerneolie": 2,
-      "citron": 1,
-      "creme fraiche": 0,
-      "hasselnøddekerner": 0,
-      "ingefær": 0,
-      "mandler": 0,
-      "nellike": 0,
-      "valnøddekerner": 0,
-      "yoghurt": 0
-    }
-  }, {
     text: "Partier på stemmesedlen?",
     answers: {
       "socialdemokraterne": 94,
@@ -359,6 +391,8 @@ const teamSelect = document.getElementById('team-selector');
 const animationSound = new Audio('sounds/nedad.m4a');
 const wrongSound = new Audio('sounds/forkert.m4a');
 const zeroPointSound = new Audio('sounds/0point.m4a');
+const endSound = new Audio('sounds/doom.m4a');
+
 
 
 const player1 = document.getElementById("player1");
@@ -484,6 +518,7 @@ function submitAnswer() {
   if (score !== undefined) {
     animationSound.play();
     animateMeter(score, () => {
+      endSound.play();
       processScore(score);
       currentPlayerIndex = (currentPlayerIndex + 1) % teamnames.length;
       setTimeout(changePlayer, 3000);
