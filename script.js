@@ -2,7 +2,7 @@
 // Game data
 const questions = [
   {
-    text: "Gule, orange og gyldne flag i Europa?",
+    text: "Lande med gul, orange eller gyldne farver i deres flag i Europa?", //medlem af FN
     answers: {
       "tyskland": 78,
       "spanien": 66,
@@ -27,7 +27,7 @@ const questions = [
     }
   },
   {
-    text: "Højt fra træets grønne top - ord i julesangen på seks bogstaver eller over?",
+    text: "Ord i julesangen 'Højt fra træets grønne top' på seks eller flere bogstaver?",
     answers: {
       "juleglansen": 73,
       "spillemand": 62,
@@ -85,7 +85,7 @@ const questions = [
     }
   },
   {
-    text: "gløgg og æbleskiver (valdemarsro)",
+    text: "Ingedrienser i gløgg og æbleskiver?", // ifølge "valdemars ro"
     answers: {
       "rødvin": 82,
       "hvedemel": 82,
@@ -96,7 +96,7 @@ const questions = [
       "flormelis": 34,
       "marmelade": 34,
       "smør": 28,
-      "kardemomme (stødt)": 27,
+      "kardemomme": 27,
       "bagepulver": 23,
       "kærnemælk": 19,
       "nelliker": 16,
@@ -123,7 +123,7 @@ const questions = [
     }
   },
   {
-    text: "lande med -ien eller -iet",
+    text: "Lande med -ien eller -iet?",
     answers: {
       "spanien": 58,
       "italien": 56,
@@ -156,7 +156,7 @@ const questions = [
     }
   },
   {
-    text: "Kageingrediens i gulerodskage, brunsviger og drømmekage fra Brovst ", // ifølge 'Frøken Jensens kogebog' og 'God mad - let at lave'
+    text: "Kageingredienser i gulerodskage, brunsviger eller drømmekage fra Brovst?", // ifølge 'Frøken Jensens kogebog' og 'God mad - let at lave'
     answers: {
       "hvedemel": 93,
       "sukker": 79,
@@ -191,7 +191,7 @@ const questions = [
       "yoghurt": 0
     }
   }, {
-    text: "partier på stemmesedlen",
+    text: "Partier på stemmesedlen?",
     answers: {
       "socialdemokraterne": 94,
       "venstre": 91,
@@ -229,11 +229,12 @@ const questions = [
     }
   },
   {
-    text: "drinks",
+    text: "Drinks?",
     answers: {
       "bloody mary": 30,
       "mojito": 24,
-      "black russian/white russian": 18,
+      "black russian": 18,
+      "white russian": 18,
       "screwdriver": 16,
       "sex on the beach": 16,
       "cosmopolitan": 15,
@@ -275,7 +276,7 @@ const questions = [
       "aviation": 0,
       "bacardi": 0,
       "barracuda": 0,
-      "bee’s knees": 0,
+      "bee's knees": 0,
       "between the sheets": 0,
       "boulevardier": 0,
       "brandy crusta": 0,
@@ -295,7 +296,7 @@ const questions = [
       "grasshopper": 0,
       "hanky panky": 0,
       "hemingway special": 0,
-      "horse’s neck": 0,
+      "horse's neck": 0,
       "illegal": 0,
       "kamikaze": 0,
       "last word": 0,
@@ -311,7 +312,7 @@ const questions = [
       "paradise": 0,
       "penicillin": 0,
       "pisco sour": 0,
-      "planter’s punch": 0,
+      "planter's punch": 0,
       "porto flip": 0,
       "ramos fizz": 0,
       "rose": 0,
@@ -324,7 +325,7 @@ const questions = [
       "stinger": 0,
       "suffering bastard": 0,
       "tipperary": 0,
-      "tommy’s margarita": 0,
+      "tommy's margarita": 0,
       "trinidad sour": 0,
       "tuxedo": 0,
       "vampiro": 0,
@@ -335,9 +336,8 @@ const questions = [
       "zombie": 0
     }
   },
-
-
 ];
+
 const teamnames = [];
 
 let currentQuestionIndex = 0;
@@ -358,6 +358,8 @@ const teamSelect = document.getElementById('team-selector');
 
 const animationSound = new Audio('sounds/nedad.m4a');
 const wrongSound = new Audio('sounds/forkert.m4a');
+const zeroPointSound = new Audio('sounds/0point.m4a');
+
 
 const player1 = document.getElementById("player1");
 const player2 = document.getElementById("player2");
@@ -416,8 +418,6 @@ function startGame() {
   }
   shufflePlayers();
   hideAllExceptPlayer(playerOrder[currentPlayerIndex]);
-
-  winnerContainer.style.display = "none";
   document.getElementById("game").style.display = "block";
   showQuestion();
   updateScores();
@@ -537,13 +537,36 @@ function animateMeter(score, callback) {
 }
 
 function processScore(score) {
-  const playerNum = playerOrder[currentPlayerIndex];
-  scores[playerNum] += score;
+  if (score === 0) {
+    zeroPointSound.play();
+
+    // Display flashing "NULPOINTER!! giv shot"
+    const flashMessage = document.createElement("div");
+    flashMessage.innerText = "NULPOINTER!! giv shot";
+    flashMessage.style.position = "absolute";
+    flashMessage.style.top = "50%";
+    flashMessage.style.left = "50%";
+    flashMessage.style.transform = "translate(-50%, -50%)";
+    flashMessage.style.color = "white";
+    flashMessage.style.fontSize = "2rem";
+    flashMessage.style.fontWeight = "bold";
+    flashMessage.style.textAlign = "center";
+    flashMessage.style.animation = "flash 1s infinite";
+    document.body.appendChild(flashMessage);
+
+    setTimeout(() => {
+      document.body.removeChild(flashMessage);
+    }, 3000);
+  } else {
+    scores[playerOrder[currentPlayerIndex]] += score;
+    updateScores();
+  }
+
+  // Check if it's the last player in the current round
   if (currentPlayerIndex === teamnames.length - 1) {
     nextButton.style.display = "inline";
     zeroScoreButton.style.display = "inline";
   }
-  updateScores();
 }
 
 function updateScores() {
