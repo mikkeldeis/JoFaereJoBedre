@@ -393,8 +393,6 @@ const wrongSound = new Audio('sounds/forkert.m4a');
 const zeroPointSound = new Audio('sounds/0point.m4a');
 const endSound = new Audio('sounds/doom.m4a');
 
-
-
 const player1 = document.getElementById("player1");
 const player2 = document.getElementById("player2");
 const player3 = document.getElementById("player3");
