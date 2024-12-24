@@ -259,7 +259,7 @@ const questions = [
       "minoritetspartiet": 0,
       "pensionistpartiet": 0
     }
-  },
+  }, 
   {
     text: "Drinks?",
     answers: {
