@@ -152,7 +152,7 @@ const questions = [
     }
   },
   {
-    text: "Ingedrienser i gløgg og æbleskiver?", // ifølge "valdemars ro"
+    text: "Ingredienser i gløgg og æbleskiver?", // ifølge "valdemars ro"
     answers: {
       "rødvin": 82,
       "hvedemel": 82,
@@ -392,7 +392,6 @@ const animationSound = new Audio('sounds/nedad.m4a');
 const wrongSound = new Audio('sounds/forkert.m4a');
 const zeroPointSound = new Audio('sounds/0point.m4a');
 const endSound = new Audio('sounds/doom.m4a');
-
 
 
 const player1 = document.getElementById("player1");
